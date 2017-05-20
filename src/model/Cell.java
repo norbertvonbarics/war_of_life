@@ -43,4 +43,9 @@ public class Cell {
   public void setAlive(boolean alive) {
     isAlive = alive;
   }
+
+  public String toString(){
+    return isAlive ? "X" : " ";
+  }
+
 }
