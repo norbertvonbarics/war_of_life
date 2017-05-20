@@ -7,12 +7,24 @@ import java.util.ArrayList;
  */
 public class Map {
   private ArrayList<ArrayList<Cell>> cells;
+  private int row;
+  private int col;
 
   public ArrayList<ArrayList<Cell>> getCells() {
     return cells;
   }
 
+  public int getRow() {
+    return row;
+  }
+
+  public int getCol() {
+    return col;
+  }
+
   public Map(int row, int col, double probability){
+    this.row = row;
+    this.col = col;
     cells = new ArrayList<ArrayList<Cell>>();
     ArrayList<Cell> temp;
     for (int i = 0; i < col ; i++) {
@@ -23,6 +35,12 @@ public class Map {
       cells.add(temp);
     }
   }
+
+  public boolean isAlive(int x, int y ){
+    return cells.get(y).get(x).isAlive();
+  }
+
+
 
 
 }
