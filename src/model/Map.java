@@ -30,7 +30,7 @@ public class Map {
     for (int i = 0; i < col ; i++) {
       temp = new ArrayList<>();
       for (int j = 0; j < row ; j++) {
-        temp.add(new Cell(i, j, Math.random() < probability));
+        temp.add(new Cell(j, i, Math.random() < probability));
       }
       cells.add(temp);
     }
@@ -53,7 +53,7 @@ public class Map {
     for (int i = x-1; i < x+2 ; i++) {
       for (int j = y-1; j < y+2; j++) {
         try {
-          if (i != j && isAlive(i, j)) counter++;
+          if ( !(i==x && j==y)  && isAlive(i, j)) counter++;
         }catch(IndexOutOfBoundsException e){};
       }
 
@@ -62,7 +62,7 @@ public class Map {
   }
 
   public void nextLifeCycle(){
-    
+
     for(ArrayList<Cell> tempList : cells){
       for(Cell tempCell : tempList){
         int a = neighbourAliveCount(tempCell.getX(),tempCell.getY());
