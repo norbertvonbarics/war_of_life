@@ -1,4 +1,5 @@
 import model.Map;
+import model.Player;
 import view.Board;
 
 import javax.swing.*;
@@ -10,12 +11,14 @@ public class GameEngine  {
 
   public void start(int x, int y,double prob) throws InterruptedException {
     Map map = new Map(x,y, prob);
-    Board board = new Board(map);
+    Player player = new Player(1,0);
+    Board board = new Board(map, player);
+
     board.frameInit();
     //board.run();
     while(true){
       map.nextLifeCycle();
-      //Thread.sleep(10);
+      Thread.sleep(100);
       board.frame.repaint();
     }
   }

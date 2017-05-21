@@ -34,18 +34,11 @@ public class Map {
       }
       cells.add(temp);
     }
+
   }
 
   public boolean isAlive(int x, int y) {
     return cells.get(y).get(x).isAlive();
-  }
-
-  public void manageAll(boolean live) {
-    for (ArrayList<Cell> tempList : cells) {
-      for (Cell tempCell : tempList) {
-        tempCell.setAlive(live);
-      }
-    }
   }
 
   public int neighbourAliveCount(int x, int y) {
