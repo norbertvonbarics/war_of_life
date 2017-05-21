@@ -62,26 +62,28 @@ public class Map {
   }
 
   public void nextLifeCycle(){
-    ArrayList<Cell> survivingCells = new ArrayList<>();
+    
     for(ArrayList<Cell> tempList : cells){
       for(Cell tempCell : tempList){
         int a = neighbourAliveCount(tempCell.getX(),tempCell.getY());
-        if(tempCell.isAlive() ){
-          if(a == 2 || a == 3) {
-            survivingCells.add(tempCell);
+        if(a > 3 || a < 2){
+          tempCell.setNextCycleWillAlive(false);
+          }else if(a==3) {
+          tempCell.setNextCycleWillAlive(true);
+          }else{
+          tempCell.setNextCycleWillAlive(tempCell.isAlive());
           }
-        }else{
-          if(a == 3){
-            survivingCells.add(tempCell);
-          }
+
+         }
         }
+    for(ArrayList<Cell> tempList : cells){
+      for(Cell tempCell : tempList){
+        tempCell.setAlive(tempCell.isNextCycleWillAlive());
       }
     }
+      }
 
-    manageAll(false);
-    for(Cell temp : survivingCells){
-      cells.get(temp.getY()).get(temp.getX()).setAlive(true);
-    }
-  }
 
 }
+
+

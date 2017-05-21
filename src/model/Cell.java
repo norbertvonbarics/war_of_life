@@ -7,6 +7,15 @@ public class Cell {
   private int x;
   private int y;
   private boolean isAlive;
+  private boolean nextCycleWillAlive;
+
+  public boolean isNextCycleWillAlive() {
+    return nextCycleWillAlive;
+  }
+
+  public void setNextCycleWillAlive(boolean nextCycleWillAlive) {
+    this.nextCycleWillAlive = nextCycleWillAlive;
+  }
 
   public Cell(int x, int y){
     this.x = x;
