@@ -11,8 +11,8 @@ public class GameEngine  {
 
   public void start(int x, int y,double prob) throws InterruptedException {
     Map map = new Map(x,y, prob);
-    Player player = new Player(1,0);
-    Board board = new Board(map, player);
+    //Player player = new Player(1,0);
+    Board board = new Board(map);
 
     board.frameInit();
     //board.run();
