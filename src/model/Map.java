@@ -40,7 +40,26 @@ public class Map {
     return cells.get(y).get(x).isAlive();
   }
 
+  public void manageAll(boolean live){
+    for(ArrayList<Cell> tempList : cells){
+      for(Cell tempCell : tempList ){
+        tempCell.setAlive(live);
+      }
+    }
+  }
 
+  public int neighbourAliveCount(int x, int y){
+    int counter = 0;
+    for (int i = x-1; i < x+2 ; i++) {
+      for (int j = y-1; j < y+2; j++) {
+        try {
+          if (i != j && isAlive(i, j)) counter++;
+        }catch(ArrayIndexOutOfBoundsException e){};
+      }
+
+    }
+    return counter;
+  }
 
 
 }

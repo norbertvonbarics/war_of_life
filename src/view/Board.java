@@ -1,18 +1,15 @@
 package view;
 
 import model.Map;
-import view.PositionedImage;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class Board extends JComponent {
+public class Board extends JComponent implements Runnable {
 
   int testBoxX;
   int testBoxY;
-  JFrame frame;
+  public JFrame frame;
   Map map;
 
   public Board(Map map) {
@@ -30,16 +27,30 @@ public class Board extends JComponent {
       }
     }
 
-
   }
 
-  public void frameInit(Board board) {
+  public void paintEngine() throws InterruptedException {
+    while(true) {
+      frame.repaint();
+      Thread.sleep((long) 100);
+    }
+  }
+
+  public void frameInit() {
     frame = new JFrame("War of Life");
-    frame.add(board);
+    frame.add(this);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
     frame.pack();
   }
 
 
+  @Override
+  public void run() {
+    try {
+      paintEngine();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
 }
