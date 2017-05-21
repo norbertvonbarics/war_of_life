@@ -15,7 +15,7 @@ public class GameEngine  {
     //board.run();
     while(true){
       map.nextLifeCycle();
-      Thread.sleep(100);
+      //Thread.sleep(10);
       board.frame.repaint();
     }
   }

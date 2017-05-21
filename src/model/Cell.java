@@ -17,12 +17,6 @@ public class Cell {
     this.nextCycleWillAlive = nextCycleWillAlive;
   }
 
-  public Cell(int x, int y){
-    this.x = x;
-    this.y = y;
-    this.isAlive = false;
-  }
-
   public Cell(int x, int y, boolean isAlive) {
     this.x = x;
     this.y = y;
@@ -33,16 +27,8 @@ public class Cell {
     return x;
   }
 
-  public void setX(int x) {
-    this.x = x;
-  }
-
   public int getY() {
     return y;
-  }
-
-  public void setY(int y) {
-    this.y = y;
   }
 
   public boolean isAlive() {
@@ -53,7 +39,7 @@ public class Cell {
     isAlive = alive;
   }
 
-  public String toString(){
+  public String toString() {
     return isAlive ? "X" : " ";
   }
 

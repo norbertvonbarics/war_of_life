@@ -5,10 +5,8 @@ import model.Map;
 import javax.swing.*;
 import java.awt.*;
 
-public class Board extends JComponent implements Runnable {
+public class Board extends JComponent {
 
-  int testBoxX;
-  int testBoxY;
   public JFrame frame;
   Map map;
 
@@ -21,19 +19,12 @@ public class Board extends JComponent implements Runnable {
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-    for (int i = 0; i <map.getCol() ; i++) {
-      for (int j = 0; j <map.getRow() ; j++) {
-        if(map.isAlive(j,i)) graphics.fillRect(j*50, i*50, 50, 50);
+    for (int i = 0; i < map.getCol(); i++) {
+      for (int j = 0; j < map.getRow(); j++) {
+        if (map.isAlive(j, i)) graphics.fillRect(j * 10, i * 10, 10, 10);
       }
     }
 
-  }
-
-  public void paintEngine() throws InterruptedException {
-    while(true) {
-      frame.repaint();
-      Thread.sleep((long) 100);
-    }
   }
 
   public void frameInit() {
@@ -45,12 +36,4 @@ public class Board extends JComponent implements Runnable {
   }
 
 
-  @Override
-  public void run() {
-    try {
-      paintEngine();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-  }
 }
