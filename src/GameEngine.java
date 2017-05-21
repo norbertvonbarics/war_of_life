@@ -13,7 +13,11 @@ public class GameEngine  {
     Board board = new Board(map);
     board.frameInit();
     //board.run();
-    System.out.println(map.neighbourAliveCount(1,0));
+    while(true){
+      map.nextLifeCycle();
+      Thread.sleep(1000);
+      board.frame.repaint();
+    }
   }
 
 }

@@ -54,12 +54,34 @@ public class Map {
       for (int j = y-1; j < y+2; j++) {
         try {
           if (i != j && isAlive(i, j)) counter++;
-        }catch(ArrayIndexOutOfBoundsException e){};
+        }catch(IndexOutOfBoundsException e){};
       }
 
     }
     return counter;
   }
 
+  public void nextLifeCycle(){
+    ArrayList<Cell> survivingCells = new ArrayList<>();
+    for(ArrayList<Cell> tempList : cells){
+      for(Cell tempCell : tempList){
+        int a = neighbourAliveCount(tempCell.getX(),tempCell.getY());
+        if(tempCell.isAlive() ){
+          if(a == 2 || a == 3) {
+            survivingCells.add(tempCell);
+          }
+        }else{
+          if(a == 3){
+            survivingCells.add(tempCell);
+          }
+        }
+      }
+    }
+
+    manageAll(false);
+    for(Cell temp : survivingCells){
+      cells.get(temp.getY()).get(temp.getX()).setAlive(true);
+    }
+  }
 
 }
