@@ -10,8 +10,14 @@ public class Map {
   private int row;
   private int col;
 
-  public ArrayList<ArrayList<Cell>> getCells() {
-    return cells;
+  public ArrayList<Cell> getCells() {
+    ArrayList<Cell> cellList = new ArrayList<>();
+    for(ArrayList<Cell> tempList : cells){
+      for(Cell tempCell : tempList){
+        cellList.add(tempCell);
+      }
+    }
+    return cellList;
   }
 
   public int getRow() {

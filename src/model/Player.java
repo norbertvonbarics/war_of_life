@@ -1,33 +1,58 @@
 package model;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 /**
  * Created by gy0p4k on 5/21/2017.
  */
-public class Player {
-  private int x;
-  private int y;
-  private static int id = 0;
+public class Player extends GameObject {
+  ArrayList<GameObject> fields;
 
-  public int getX() {
-    return x;
+
+  public Player(int x, int y, ArrayList<GameObject> fields){
+    super(x,y);
+    this.color = new Color((int)(Math.random() * 0x1000000));
+    this.fields = fields;
   }
 
-  public void setX(int x) {
-    this.x = x;
+  public  void moveUp() {
+    GameObject field = new GameObject(x,y-1);
+    for(GameObject temp : fields){
+      if(field.isTheSamePlace(temp)){
+        y--;
+        break;
+      }
+    }
   }
 
-  public int getY() {
-    return y;
+  public  void moveDown() {
+    GameObject field = new GameObject(x,y+1);
+    for(GameObject temp : fields){
+      if(field.isTheSamePlace(temp)) {
+        y++;
+        break;
+      }
+    }
   }
 
-  public void setY(int y) {
-    this.y = y;
+  public  void moveLeft() {
+    GameObject field = new GameObject(x-1,y);
+    for(GameObject temp : fields){
+      if(field.isTheSamePlace(temp)) {
+        x--;
+        break;
+      }
+    }
   }
 
-  public Player(int x, int y){
-    this.x = x;
-    this.y = y;
-    id++;
+  public  void moveRight() {
+    GameObject field = new GameObject(x+1,y);
+    for(GameObject temp : fields){
+      if(field.isTheSamePlace(temp)) {
+        x++;
+        break;
+      }
+    }
   }
-
 }

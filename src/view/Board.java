@@ -1,5 +1,8 @@
 package view;
 
+import controller.GameController;
+import model.Cell;
+import model.GameObject;
 import model.Map;
 import model.Player;
 
@@ -13,19 +16,32 @@ public class Board extends JComponent {
 
   public JFrame frame;
   Map map;
-  int border = 50;
+  int border = 150;
   ArrayList<Player> playerList;
+  ArrayList<GameObject> gameObjects;
 
-  public Board(Map map, ArrayList<Player> player) {
-    this.playerList = player;
-    setPreferredSize(new Dimension(1400, 1400));
-    setVisible(true);
-    this.map = map;
-  }
+  GameController cont1;
+  GameController cont2;
 
-  public Board(Map map) {
+
+  public Board(ArrayList<GameObject> gameObjects) {
     playerList = new ArrayList<>();
-    setPreferredSize(new Dimension(1400, 1400));
+    this.gameObjects = gameObjects;
+    for (GameObject temp : gameObjects) {
+      if (temp instanceof Player) {
+        playerList.add((Player) temp);
+      }
+    }
+
+    setFocusable(true);
+    requestFocusInWindow();
+
+    cont1 = new GameController(playerList.get(0), 0);
+    cont2 = new GameController(playerList.get(1), 1);
+    addKeyListener(cont1);
+    addKeyListener(cont2);
+    setPreferredSize(new Dimension(1600, 1600));
+
     setVisible(true);
     this.map = map;
   }
@@ -35,16 +51,19 @@ public class Board extends JComponent {
   public void paint(Graphics graphics) {
     super.paint(graphics);
     graphics.setColor(Color.black);
-    for (int i = 0; i < map.getCol(); i++) {
-      for (int j = 0; j < map.getRow(); j++) {
-        graphics.drawRect(j * 50+border, i * 50+border, 50, 50);
-        if (map.isAlive(j, i)) graphics.fillRect(j * 50+border, i * 50+border, 50, 50);
+    for (GameObject temp : gameObjects) {
+      graphics.setColor(temp.getColor());
+      if (temp instanceof Cell) {
+        if (((Cell) temp).isAlive()) {
+          graphics.fillRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+        } else {
+          graphics.drawRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+        }
+      } else if (temp instanceof Player) {
+        graphics.fillRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+      } else {
+        graphics.drawRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
       }
-    }
-
-    graphics.setColor(Color.blue);
-    for(Player player : playerList) {
-      graphics.fillRect(player.getX() * 50 + border, player.getY() * 50 + border, 50, 50);
     }
   }
 
@@ -55,5 +74,4 @@ public class Board extends JComponent {
     frame.setVisible(true);
     frame.pack();
   }
-
 }
