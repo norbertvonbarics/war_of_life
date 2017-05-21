@@ -1,11 +1,12 @@
 package model;
 
+import java.awt.*;
+
 /**
  * Created by gy0p4k on 5/20/2017.
  */
-public class Cell {
-  private int x;
-  private int y;
+public class Cell extends GameObject {
+
   private boolean isAlive;
   private boolean nextCycleWillAlive;
 
@@ -18,18 +19,11 @@ public class Cell {
   }
 
   public Cell(int x, int y, boolean isAlive) {
-    this.x = x;
-    this.y = y;
+    super(x,y);
     this.isAlive = isAlive;
+    this.color = Color.black;
   }
 
-  public int getX() {
-    return x;
-  }
-
-  public int getY() {
-    return y;
-  }
 
   public boolean isAlive() {
     return isAlive;
