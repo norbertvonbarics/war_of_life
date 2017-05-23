@@ -20,6 +20,9 @@ public class Map {
     }
     return cellList;
   }
+  public Cell getCell(int x, int y){
+    return cells.get(y).get(x);
+  }
 
   public int getRow() {
     return row;
@@ -60,6 +63,7 @@ public class Map {
       }
 
     }
+
     return counter;
   }
 

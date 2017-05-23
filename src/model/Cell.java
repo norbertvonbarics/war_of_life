@@ -25,6 +25,8 @@ public class Cell extends GameObject {
   }
 
 
+
+
   public boolean isAlive() {
     return isAlive;
   }

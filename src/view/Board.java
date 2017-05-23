@@ -16,10 +16,10 @@ public class Board extends JComponent {
 
   public JFrame frame;
   Map map;
-  int border = 150;
+  int border = 100;
   ArrayList<Player> playerList;
   ArrayList<GameObject> gameObjects;
-  int size = 50;
+  int size = 30;
   JLabel player1;
   JLabel player2;
   GameController cont1;
@@ -82,3 +82,16 @@ public class Board extends JComponent {
     frame.pack();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

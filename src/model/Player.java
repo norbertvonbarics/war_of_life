@@ -13,6 +13,7 @@ public class Player extends GameObject {
   int originalX;
   int originalY;
   String name;
+  Bomb bomb;
 
 
   public int getScore() {
@@ -31,54 +32,31 @@ public class Player extends GameObject {
     this.hp = hp;
   }
 
-  public Player(int x, int y, ArrayList<GameObject> fields, String name) {
+  public Player(int x, int y, ArrayList<GameObject> fields, String name,Map map) {
     super(x, y);
     hp = 10;
+    bomb = new Bomb(map);
     this.name = name;
     originalX = x;
     originalY = y;
     this.color = new Color((int) (Math.random() * 0x1000000));
     this.fields = fields;
+
   }
 
-  public void moveUp() {
-    GameObject field = new GameObject(x, y - 1);
+  public void move(int dirX, int dirY) {
+    GameObject field = new GameObject(x + dirX, y + dirY);
     for (GameObject temp : fields) {
       if (field.isTheSamePlace(temp)) {
-        y--;
+        x += dirX;
+        y += dirY;
         break;
       }
     }
   }
 
-  public void moveDown() {
-    GameObject field = new GameObject(x, y + 1);
-    for (GameObject temp : fields) {
-      if (field.isTheSamePlace(temp)) {
-        y++;
-        break;
-      }
-    }
-  }
-
-  public void moveLeft() {
-    GameObject field = new GameObject(x - 1, y);
-    for (GameObject temp : fields) {
-      if (field.isTheSamePlace(temp)) {
-        x--;
-        break;
-      }
-    }
-  }
-
-  public void moveRight() {
-    GameObject field = new GameObject(x + 1, y);
-    for (GameObject temp : fields) {
-      if (field.isTheSamePlace(temp)) {
-        x++;
-        break;
-      }
-    }
+  public void plantBomb(){
+    bomb.plantBomb(x,y);
   }
 
   public boolean isSamePlaceThanAnyCell() {

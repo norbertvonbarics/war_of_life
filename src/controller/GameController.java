@@ -43,13 +43,15 @@ public class GameController implements KeyListener {
   @Override
   public void keyPressed(KeyEvent e) {
     if(e.getKeyCode()== up)
-      player.moveUp();
+      player.move(0, -1);
     else if(e.getKeyCode()== down)
-      player.moveDown();
+      player.move(0, 1);
     else if(e.getKeyCode()== left)
-      player.moveLeft();
+      player.move(-1, 0);
     else if(e.getKeyCode()== right)
-      player.moveRight();
+      player.move(1, 0);
+    else if(e.getKeyCode()== KeyEvent.VK_E)
+      player.plantBomb();
 
 
   }
