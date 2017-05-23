@@ -60,10 +60,6 @@ public class Player extends GameObject {
     bomb.plantBomb(x,y);
   }
 
-  public void plantBomb(){
-    bomb.plantBomb(x,y);
-  }
-
   public boolean isSamePlaceThanAnyCell() {
     for (GameObject temp : fields) {
       if (this.isTheSamePlace(temp) && temp instanceof Cell && ((Cell) temp).isAlive() ) return true;
