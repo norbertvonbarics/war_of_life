@@ -38,8 +38,8 @@ public class GameEngine  {
     safeZoneDown = new SafeZone(12,-2);
     gameObjects.addAll(safeZoneDown.getFields());
 
-    Player p1 = new Player(12,26, gameObjects);
-    Player p2 = new Player(12,-2, gameObjects);
+    Player p1 = new Player(12,26, gameObjects, "p1");
+    Player p2 = new Player(12,-2, gameObjects, "p2");
     players.add(p1);
     players.add(p2);
     gameObjects.addAll(players);

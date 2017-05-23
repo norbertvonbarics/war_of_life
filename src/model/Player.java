@@ -12,6 +12,8 @@ public class Player extends GameObject {
   int hp;
   int originalX;
   int originalY;
+  String name;
+
 
   public int getScore() {
     return score;
@@ -29,9 +31,10 @@ public class Player extends GameObject {
     this.hp = hp;
   }
 
-  public Player(int x, int y, ArrayList<GameObject> fields) {
+  public Player(int x, int y, ArrayList<GameObject> fields, String name) {
     super(x, y);
     hp = 10;
+    this.name = name;
     originalX = x;
     originalY = y;
     this.color = new Color((int) (Math.random() * 0x1000000));
