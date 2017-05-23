@@ -19,7 +19,9 @@ public class Board extends JComponent {
   int border = 150;
   ArrayList<Player> playerList;
   ArrayList<GameObject> gameObjects;
-
+  int size = 50;
+  JLabel player1;
+  JLabel player2;
   GameController cont1;
   GameController cont2;
 
@@ -35,6 +37,9 @@ public class Board extends JComponent {
 
     setFocusable(true);
     requestFocusInWindow();
+    player1 = new JLabel("test");
+    player1.setAlignmentX(1200);
+    player1.setAlignmentY(1200);
 
     cont1 = new GameController(playerList.get(0), 0);
     cont2 = new GameController(playerList.get(1), 1);
@@ -51,18 +56,20 @@ public class Board extends JComponent {
   public void paint(Graphics graphics) {
     super.paint(graphics);
     graphics.setColor(Color.black);
+
     for (GameObject temp : gameObjects) {
+      player1.setText("asd");
       graphics.setColor(temp.getColor());
       if (temp instanceof Cell) {
         if (((Cell) temp).isAlive()) {
-          graphics.fillRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+          graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
         } else {
-          graphics.drawRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+          graphics.drawRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
         }
       } else if (temp instanceof Player) {
-        graphics.fillRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+        graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
       } else {
-        graphics.drawRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+        graphics.drawRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
       }
     }
   }

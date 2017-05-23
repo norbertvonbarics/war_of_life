@@ -51,6 +51,7 @@ public class GameController implements KeyListener {
     else if(e.getKeyCode()== right)
       player.moveRight();
 
+
   }
 
   @Override

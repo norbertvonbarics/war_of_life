@@ -9,6 +9,7 @@ public class Map {
   private ArrayList<ArrayList<Cell>> cells;
   private int row;
   private int col;
+  double probability;
 
   public ArrayList<Cell> getCells() {
     ArrayList<Cell> cellList = new ArrayList<>();
@@ -30,6 +31,7 @@ public class Map {
 
   public Map(int row, int col, double probability) {
     this.row = row;
+    this.probability = probability;
     this.col = col;
     cells = new ArrayList<ArrayList<Cell>>();
     ArrayList<Cell> temp;
@@ -59,6 +61,14 @@ public class Map {
 
     }
     return counter;
+  }
+
+  public void randomize(){
+    for(ArrayList<Cell> tempList : cells){
+      for(Cell temp : tempList){
+        temp.setAlive(Math.random()<probability);
+      }
+    }
   }
 
   public void nextLifeCycle() {
