@@ -6,6 +6,8 @@ import model.SafeZone;
 import view.Board;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -25,6 +27,7 @@ public class GameEngine {
   String gametype;
   Player p1;
   Player p2;
+  int nextCycleCounter = 0;
 
   public GameEngine(int x, int y, double prob) throws InterruptedException {
     gameObjects = new ArrayList<>();
@@ -53,19 +56,25 @@ public class GameEngine {
 
 
   public void start() throws InterruptedException {
+    Timer timer = new Timer(100, null);
+  	timer.addActionListener(e -> {
+  	    if(nextCycleCounter > 9) {
+          map.nextLifeCycle();
+          nextCycleCounter = 0;
+        }
+        else nextCycleCounter++;
 
-
-    //board.run();
-    while (p1.getHp() > 0 && p2.getHp() > 0) {
-      map.nextLifeCycle();
-      Thread.sleep(100);
-      board.frame.repaint();
-      checkDead();
-      winchecker(gametype);
-    }
+        board.frame.repaint();
+        checkDead();
+        winchecker(gametype);
+        if(p1.getHp() < 0 || p2.getHp() < 0)
+          timer.stop();
+        }
+    );
+  	timer.start();
   }
 
-  public void checkDead() throws InterruptedException {
+  public void checkDead()  {
     for (Player temp : players) {
       if (temp.isSamePlaceThanAnyCell()) {
         temp.setHp(temp.getHp() - 1);
