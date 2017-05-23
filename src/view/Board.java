@@ -82,3 +82,16 @@ public class Board extends JComponent {
     frame.pack();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

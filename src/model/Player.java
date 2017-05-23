@@ -13,6 +13,7 @@ public class Player extends GameObject {
   int originalX;
   int originalY;
   String name;
+  Bomb bomb;
 
 
   public int getScore() {
@@ -31,14 +32,16 @@ public class Player extends GameObject {
     this.hp = hp;
   }
 
-  public Player(int x, int y, ArrayList<GameObject> fields, String name) {
+  public Player(int x, int y, ArrayList<GameObject> fields, String name,Map map) {
     super(x, y);
     hp = 10;
+    bomb = new Bomb(map);
     this.name = name;
     originalX = x;
     originalY = y;
     this.color = new Color((int) (Math.random() * 0x1000000));
     this.fields = fields;
+
   }
 
   public void moveUp() {
@@ -79,6 +82,10 @@ public class Player extends GameObject {
         break;
       }
     }
+  }
+
+  public void plantBomb(){
+    bomb.plantBomb(x,y);
   }
 
   public boolean isSamePlaceThanAnyCell() {

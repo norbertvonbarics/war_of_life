@@ -50,6 +50,8 @@ public class GameController implements KeyListener {
       player.moveLeft();
     else if(e.getKeyCode()== right)
       player.moveRight();
+    else if(e.getKeyCode()== KeyEvent.VK_E)
+      player.plantBomb();
 
 
   }
