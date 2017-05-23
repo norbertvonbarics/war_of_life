@@ -60,13 +60,13 @@ public class GameController implements KeyListener {
     int key = e.getKeyCode();
     if(key == up)
       upPressed = true;
-    if(key == down)
+    else if(key == down)
       downPressed = true;
-    if(key == left)
+    else if(key == left)
       leftPressed = true;
-    if(key == right)
+    else if(key == right)
       rightPressed = true;
-    if(key == KeyEvent.VK_E)
+    else if(key == KeyEvent.VK_E)
       bombPressed = true;
   }
 
@@ -75,13 +75,13 @@ public class GameController implements KeyListener {
     int key = e.getKeyCode();
     if(key == up)
       upPressed = false;
-    if(key == down)
+    else if(key == down)
       downPressed = false;
-    if(key == left)
+    else if(key == left)
       leftPressed = false;
-    if(key == right)
+    else if(key == right)
       rightPressed = false;
-    if(key == KeyEvent.VK_E)
+    else if(key == KeyEvent.VK_E)
       bombPressed = false;
   }
 }
