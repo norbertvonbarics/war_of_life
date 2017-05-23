@@ -92,5 +92,8 @@ public class Player extends GameObject {
     x = originalX;
     y = originalY;
   }
+  public String toString(){
+    return name + " " + score + " / " + hp;
+  }
 
 }

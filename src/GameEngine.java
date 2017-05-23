@@ -56,7 +56,7 @@ public class GameEngine {
 
 
     //board.run();
-    while (true) {
+    while (p1.getHp() > 0 && p2.getHp() > 0) {
       map.nextLifeCycle();
       Thread.sleep(100);
       board.frame.repaint();
@@ -80,6 +80,8 @@ public class GameEngine {
     for (Player temp : players) {
 
       temp.starterPosition();
+      System.out.println(temp);
+
 
     }
   }
