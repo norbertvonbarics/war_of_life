@@ -42,6 +42,7 @@ public class Player extends GameObject {
     this.color = new Color((int) (Math.random() * 0x1000000));
     this.fields = fields;
 
+
   }
 
   public void move(int dirX, int dirY) {
@@ -53,6 +54,10 @@ public class Player extends GameObject {
         break;
       }
     }
+  }
+
+  public void plantBomb(){
+    bomb.plantBomb(x,y);
   }
 
   public void plantBomb(){
