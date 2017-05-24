@@ -19,18 +19,20 @@ public class GameController implements KeyListener {
   int down;
   int left;
   int right;
+  int bomb;
   boolean upPressed = false;
   boolean downPressed = false;
   boolean leftPressed = false;
   boolean rightPressed = false;
   boolean bombPressed = false;
 
-  public GameController(Player player, int upKey, int downKey, int leftKey, int rightKey) {
+  public GameController(Player player, int upKey, int downKey, int leftKey, int rightKey, int bombKey) {
     this.player = player;
     up = upKey;
     down = downKey;
     left = leftKey;
     right = rightKey;
+    bomb = bombKey;
 
     startTimer();
   }
@@ -66,7 +68,7 @@ public class GameController implements KeyListener {
       leftPressed = true;
     else if(key == right)
       rightPressed = true;
-    else if(key == KeyEvent.VK_E)
+    else if(key == bomb)
       bombPressed = true;
   }
 
@@ -81,7 +83,7 @@ public class GameController implements KeyListener {
       leftPressed = false;
     else if(key == right)
       rightPressed = false;
-    else if(key == KeyEvent.VK_E)
+    else if(key == bomb)
       bombPressed = false;
   }
 }

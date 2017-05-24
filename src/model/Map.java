@@ -94,6 +94,20 @@ public class Map {
         tempCell.setAlive(tempCell.isNextCycleWillAlive());
       }
     }
+    for (ArrayList<Cell> tempList : cells) {
+      for (Cell tempCell : tempList) {
+        int a = neighbourAliveCount(tempCell.getX(), tempCell.getY());
+        if (a > 3 || a < 2) {
+          tempCell.setNextCycleWillAlive(false);
+        } else if (a == 3) {
+          tempCell.setNextCycleWillAlive(true);
+        } else {
+          tempCell.setNextCycleWillAlive(tempCell.isAlive());
+        }
+      }
+    }
+
+
   }
 }
 

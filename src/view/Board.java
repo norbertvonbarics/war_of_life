@@ -41,8 +41,8 @@ public class Board extends JComponent {
     player1.setAlignmentX(1200);
     player1.setAlignmentY(1200);
 
-    cont1 = new GameController(playerList.get(0), KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D);
-    cont2 = new GameController(playerList.get(1), KeyEvent.VK_I, KeyEvent.VK_K, KeyEvent.VK_J, KeyEvent.VK_L);
+    cont1 = new GameController(playerList.get(0), KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_E);
+    cont2 = new GameController(playerList.get(1), KeyEvent.VK_I, KeyEvent.VK_K, KeyEvent.VK_J, KeyEvent.VK_L, KeyEvent.VK_O);
     addKeyListener(cont1);
     addKeyListener(cont2);
     setPreferredSize(new Dimension(1600, 1600));
@@ -63,7 +63,11 @@ public class Board extends JComponent {
       if (temp instanceof Cell) {
         if (((Cell) temp).isAlive()) {
           graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
-        } else {
+        } else if(((Cell) temp).isNextCycleWillAlive()) {
+          graphics.setColor(Color.GRAY);
+          graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
+        }else{
+          graphics.setColor(Color.BLACK);
           graphics.drawRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
         }
       } else if (temp instanceof Player) {
