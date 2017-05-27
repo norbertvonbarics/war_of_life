@@ -5,6 +5,7 @@ import model.Player;
 import model.SafeZone;
 import view.Board;
 import javax.swing.*;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 
@@ -61,8 +62,11 @@ public class GameEngine {
         board.frame.repaint();
         checkDead();
         winchecker(gametype);
-        if(p1.getHp() < 0 || p2.getHp() < 0)
+        if(p1.getHp() <= 0 || p2.getHp() <= 0) {
           timer.stop();
+          board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
+        }
+
         }
     );
   	timer.start();
