@@ -3,9 +3,6 @@ package model;
 import java.awt.*;
 import java.util.ArrayList;
 
-/**
- * Created by gy0p4k on 5/21/2017.
- */
 public class Player extends GameObject {
   ArrayList<GameObject> fields;
   int score = 0;
@@ -32,7 +29,7 @@ public class Player extends GameObject {
     this.hp = hp;
   }
 
-  public Player(int x, int y, ArrayList<GameObject> fields, String name,Map map) {
+  public Player(int x, int y, ArrayList<GameObject> fields, String name, Map map) {
     super(x, y);
     hp = 10;
     bomb = new Bomb(map);
@@ -56,13 +53,14 @@ public class Player extends GameObject {
     }
   }
 
-  public void plantBomb(){
-    bomb.plantBomb(x,y);
+  public void plantBomb() {
+
+    bomb.plantBomb(x, y);
   }
 
   public boolean isSamePlaceThanAnyCell() {
     for (GameObject temp : fields) {
-      if (this.isTheSamePlace(temp) && temp instanceof Cell && ((Cell) temp).isAlive() ) return true;
+      if (this.isTheSamePlace(temp) && temp instanceof Cell && ((Cell) temp).isAlive()) return true;
     }
     return false;
   }
@@ -71,7 +69,8 @@ public class Player extends GameObject {
     x = originalX;
     y = originalY;
   }
-  public String toString(){
+
+  public String toString() {
     return name + " " + score + " / " + hp;
   }
 

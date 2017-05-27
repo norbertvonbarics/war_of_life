@@ -13,14 +13,15 @@ public class Map {
 
   public ArrayList<Cell> getCells() {
     ArrayList<Cell> cellList = new ArrayList<>();
-    for(ArrayList<Cell> tempList : cells){
-      for(Cell tempCell : tempList){
+    for (ArrayList<Cell> tempList : cells) {
+      for (Cell tempCell : tempList) {
         cellList.add(tempCell);
       }
     }
     return cellList;
   }
-  public Cell getCell(int x, int y){
+
+  public Cell getCell(int x, int y) {
     return cells.get(y).get(x);
   }
 
@@ -67,33 +68,29 @@ public class Map {
     return counter;
   }
 
-  public void randomize(){
-    for(ArrayList<Cell> tempList : cells){
-      for(Cell temp : tempList){
-        temp.setAlive(Math.random()<probability);
+  public void randomize() {
+    for (ArrayList<Cell> tempList : cells) {
+      for (Cell temp : tempList) {
+        temp.setAlive(Math.random() < probability);
       }
     }
   }
 
   public void nextLifeCycle() {
-    for (ArrayList<Cell> tempList : cells) {
-      for (Cell tempCell : tempList) {
-        int a = neighbourAliveCount(tempCell.getX(), tempCell.getY());
-        if (a > 3 || a < 2) {
-          tempCell.setNextCycleWillAlive(false);
-        } else if (a == 3) {
-          tempCell.setNextCycleWillAlive(true);
-        } else {
-          tempCell.setNextCycleWillAlive(tempCell.isAlive());
-        }
-      }
-    }
+    neighbourCheck();
 
     for (ArrayList<Cell> tempList : cells) {
       for (Cell tempCell : tempList) {
         tempCell.setAlive(tempCell.isNextCycleWillAlive());
       }
     }
+
+    neighbourCheck();
+
+
+  }
+
+  public void neighbourCheck() {
     for (ArrayList<Cell> tempList : cells) {
       for (Cell tempCell : tempList) {
         int a = neighbourAliveCount(tempCell.getX(), tempCell.getY());
@@ -107,8 +104,8 @@ public class Map {
       }
     }
 
-
   }
+
 }
 
 

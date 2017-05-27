@@ -9,17 +9,16 @@ import model.Player;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Board extends JComponent {
 
   public JFrame frame;
   Map map;
-  int border = 100;
+  int border = 150;
   ArrayList<Player> playerList;
   ArrayList<GameObject> gameObjects;
-  int size = 30;
+  int size = 50;
   JLabel player1;
   JLabel player2;
   GameController cont1;

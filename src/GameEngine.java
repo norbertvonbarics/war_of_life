@@ -1,19 +1,13 @@
-import controller.GameController;
+
 import model.GameObject;
 import model.Map;
 import model.Player;
 import model.SafeZone;
 import view.Board;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collections;
 
-/**
- * Created by gy0p4k on 5/21/2017.
- */
+
 public class GameEngine {
   ArrayList<GameObject> gameObjects;
   Map map;
