@@ -18,7 +18,7 @@ public class Board extends JComponent {
   int border = 150;
   ArrayList<Player> playerList;
   ArrayList<GameObject> gameObjects;
-  int size = 50;
+  int size = 20;
   JLabel player1;
   JLabel player2;
   GameController cont1;
@@ -28,9 +28,9 @@ public class Board extends JComponent {
   public Board(ArrayList<GameObject> gameObjects) {
     playerList = new ArrayList<>();
     this.gameObjects = gameObjects;
-    for (GameObject temp : gameObjects) {
-      if (temp instanceof Player) {
-        playerList.add((Player) temp);
+    for (GameObject gameObject : gameObjects) {
+      if (gameObject instanceof Player) {
+        playerList.add((Player) gameObject);
       }
     }
 
@@ -56,23 +56,23 @@ public class Board extends JComponent {
     super.paint(graphics);
     graphics.setColor(Color.black);
 
-    for (GameObject temp : gameObjects) {
+    for (GameObject gameObject : gameObjects) {
       player1.setText("asd");
-      graphics.setColor(temp.getColor());
-      if (temp instanceof Cell) {
-        if (((Cell) temp).isAlive()) {
-          graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
-        } else if(((Cell) temp).isNextCycleWillAlive()) {
-          graphics.setColor(Color.GRAY);
-          graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
+      graphics.setColor(gameObject.getColor());
+      if (gameObject instanceof Cell) {
+        if (((Cell) gameObject).isAlive()) {
+          graphics.fillRect(gameObject.getX() * size + border, gameObject.getY() * size + border, size, size);
+        } else if(((Cell) gameObject).isNextCycleWillAlive()) {
+//          graphics.setColor(Color.GRAY);
+//          graphics.fillRect(gameObject.getX() * size + border, gameObject.getY() * size + border, size, size);
         }else{
-          graphics.setColor(Color.BLACK);
-          graphics.drawRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
+//          graphics.setColor(Color.BLACK);
+//          graphics.drawRect(gameObject.getX() * size + border, gameObject.getY() * size + border, size, size);
         }
-      } else if (temp instanceof Player) {
-        graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
+      } else if (gameObject instanceof Player) {
+        graphics.fillRect(gameObject.getX() * size + border, gameObject.getY() * size + border, size, size);
       } else {
-        graphics.drawRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
+        graphics.drawRect(gameObject.getX() * size + border, gameObject.getY() * size + border, size, size);
       }
     }
   }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 
 public class GameEngine {
+
   ArrayList<GameObject> gameObjects;
   Map map;
   int x;
@@ -38,41 +39,39 @@ public class GameEngine {
     gameObjects.addAll(safeZoneUp.getFields());
     gameObjects.addAll(safeZoneDown.getFields());
 
-    p1 = new Player(12, 26, gameObjects, "p1",map);
-    p2 = new Player(12, -2, gameObjects, "p2",map);
+    p1 = new Player(12, 26, gameObjects, "p1", map);
+    p2 = new Player(12, -2, gameObjects, "p2", map);
     players.add(p1);
     players.add(p2);
     gameObjects.addAll(players);
 
     board = new Board(gameObjects);
     board.frameInit();
-
   }
 
 
   public void start() throws InterruptedException {
     Timer timer = new Timer(100, null);
-  	timer.addActionListener(e -> {
-  	    if(nextCycleCounter > 9) {
-          map.nextLifeCycle();
-          nextCycleCounter = 0;
-        }
-        else nextCycleCounter++;
-
-        board.frame.repaint();
-        checkDead();
-        winchecker(gametype);
-        if(p1.getHp() <= 0 || p2.getHp() <= 0) {
-          timer.stop();
-          board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
-        }
-
+    timer.addActionListener(e -> {
+          if (nextCycleCounter > 9) {
+            map.nextLifeCycle();
+            nextCycleCounter = 0;
+          } else {
+            nextCycleCounter++;
+          }
+          board.frame.repaint();
+          checkDead();
+          winchecker(gametype);
+          if (p1.getHp() <= 0 || p2.getHp() <= 0) {
+            timer.stop();
+            board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
+          }
         }
     );
-  	timer.start();
+    timer.start();
   }
 
-  public void checkDead()  {
+  public void checkDead() {
     for (Player temp : players) {
       if (temp.isSamePlaceThanAnyCell()) {
         temp.setHp(temp.getHp() - 1);
@@ -80,22 +79,17 @@ public class GameEngine {
         map.randomize();
       }
     }
-
   }
 
   public void playerReturner() {
     for (Player temp : players) {
-
       temp.starterPosition();
       System.out.println(temp);
-
-
     }
   }
 
   public void winchecker(String gametype) {
     switch (gametype) {
-
       case "occupy":
         occupyChecker(p1, safeZoneUp);
         occupyChecker(p2, safeZoneDown);
@@ -119,5 +113,5 @@ public class GameEngine {
       }
     }
   }
-
 }
+

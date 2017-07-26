@@ -6,6 +6,7 @@ import java.awt.*;
  * Created by gy0p4k on 5/21/2017.
  */
 public class GameObject {
+
   int x;
   int y;
   private static int id = 0;
@@ -27,14 +28,14 @@ public class GameObject {
     this.y = y;
   }
 
-  public GameObject(int x, int y){
+  public GameObject(int x, int y) {
     this.x = x;
     this.y = y;
     id++;
     color = Color.BLUE;
   }
 
-  public boolean isTheSamePlace(GameObject that){
+  public boolean isTheSamePlace(GameObject that) {
     return this.x == that.x && this.y == that.y;
   }
 

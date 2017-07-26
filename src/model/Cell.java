@@ -16,12 +16,10 @@ public class Cell extends GameObject {
   }
 
   public Cell(int x, int y, boolean isAlive) {
-    super(x,y);
+    super(x, y);
     this.isAlive = isAlive;
     this.color = Color.black;
   }
-
-
 
 
   public boolean isAlive() {

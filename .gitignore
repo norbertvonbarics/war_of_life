@@ -1,3 +1,8 @@
+*.iml
+*.yml
+*.xml
+.idea
+
 # Compiled class file
 *.class
 
