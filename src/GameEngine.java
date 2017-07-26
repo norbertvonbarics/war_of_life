@@ -1,17 +1,10 @@
-import controller.GameController;
+
 import model.GameObject;
 import model.Map;
 import model.Player;
 import model.SafeZone;
 import view.Board;
-
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collections;
-
-/**
- * Created by gy0p4k on 5/21/2017.
- */
 public class GameEngine  {
 
   public void start(int x, int y,double prob) throws InterruptedException {
@@ -38,7 +31,7 @@ public class GameEngine  {
     //board.run();
     while(true){
       map.nextLifeCycle();
-      Thread.sleep(1000);
+      Thread.sleep(500);
       board.frame.repaint();
     }
   }

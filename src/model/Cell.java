@@ -2,9 +2,6 @@ package model;
 
 import java.awt.*;
 
-/**
- * Created by gy0p4k on 5/20/2017.
- */
 public class Cell extends GameObject {
 
   private boolean isAlive;

@@ -3,9 +3,6 @@ package model;
 import java.awt.*;
 import java.util.ArrayList;
 
-/**
- * Created by gy0p4k on 5/21/2017.
- */
 public class Player extends GameObject {
   ArrayList<GameObject> fields;
 

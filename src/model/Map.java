@@ -2,9 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-/**
- * Created by gy0p4k on 5/21/2017.
- */
 public class Map {
   private ArrayList<ArrayList<Cell>> cells;
   private int row;

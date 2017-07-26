@@ -15,8 +15,9 @@ import java.util.ArrayList;
 public class Board extends JComponent {
 
   public JFrame frame;
+  final int size = 30;
   Map map;
-  int border = 150;
+  int border = size;
   ArrayList<Player> playerList;
   ArrayList<GameObject> gameObjects;
 
@@ -55,14 +56,14 @@ public class Board extends JComponent {
       graphics.setColor(temp.getColor());
       if (temp instanceof Cell) {
         if (((Cell) temp).isAlive()) {
-          graphics.fillRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+          graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
         } else {
-          graphics.drawRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+          graphics.drawRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
         }
       } else if (temp instanceof Player) {
-        graphics.fillRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+        graphics.fillRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
       } else {
-        graphics.drawRect(temp.getX() * 50 + border, temp.getY() * 50 + border, 50, 50);
+        graphics.drawRect(temp.getX() * size + border, temp.getY() * size + border, size, size);
       }
     }
   }
