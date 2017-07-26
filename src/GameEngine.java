@@ -34,13 +34,13 @@ public class GameEngine {
     gameObjects.addAll(map.getCells());
     gametype = "occupy";
 
-    safeZoneDown = new SafeZone(12, 26);
-    safeZoneUp = new SafeZone(12, -2);
+    safeZoneDown = new SafeZone(26, 12);
+    safeZoneUp = new SafeZone(-2, 12);
     gameObjects.addAll(safeZoneUp.getFields());
     gameObjects.addAll(safeZoneDown.getFields());
 
-    p1 = new Player(12, 26, gameObjects, "p1", map);
-    p2 = new Player(12, -2, gameObjects, "p2", map);
+    p1 = new Player(26, 12, gameObjects, "p1", map);
+    p2 = new Player(-2, 12, gameObjects, "p2", map);
     players.add(p1);
     players.add(p2);
     gameObjects.addAll(players);

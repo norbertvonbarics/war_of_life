@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Player extends GameObject {
+
   ArrayList<GameObject> fields;
   int score = 0;
   int hp;
@@ -60,7 +61,9 @@ public class Player extends GameObject {
 
   public boolean isSamePlaceThanAnyCell() {
     for (GameObject temp : fields) {
-      if (this.isTheSamePlace(temp) && temp instanceof Cell && ((Cell) temp).isAlive()) return true;
+      if (this.isTheSamePlace(temp) && temp instanceof Cell && ((Cell) temp).isAlive()) {
+        return true;
+      }
     }
     return false;
   }
@@ -73,5 +76,4 @@ public class Player extends GameObject {
   public String toString() {
     return name + " " + score + " / " + hp;
   }
-
 }

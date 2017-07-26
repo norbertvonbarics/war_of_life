@@ -2,9 +2,6 @@ package model;
 
 import java.awt.*;
 
-/**
- * Created by gy0p4k on 5/21/2017.
- */
 public class GameObject {
 
   int x;

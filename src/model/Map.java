@@ -2,10 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
-/**
- * Created by gy0p4k on 5/21/2017.
- */
 public class Map {
+
   private ArrayList<ArrayList<Cell>> cells;
   private int row;
   private int col;
@@ -46,7 +44,6 @@ public class Map {
       }
       cells.add(temp);
     }
-
   }
 
   public boolean isAlive(int x, int y) {
@@ -58,13 +55,13 @@ public class Map {
     for (int i = x - 1; i < x + 2; i++) {
       for (int j = y - 1; j < y + 2; j++) {
         try {
-          if (!(i == x && j == y) && isAlive(i, j)) counter++;
-        } catch (IndexOutOfBoundsException e) {
+          if (!(i == x && j == y) && isAlive(i, j)) {
+            counter++;
+          }
+        } catch (IndexOutOfBoundsException ignored) {
         }
       }
-
     }
-
     return counter;
   }
 
@@ -84,10 +81,7 @@ public class Map {
         tempCell.setAlive(tempCell.isNextCycleWillAlive());
       }
     }
-
     neighbourCheck();
-
-
   }
 
   public void neighbourCheck() {
@@ -103,9 +97,7 @@ public class Map {
         }
       }
     }
-
   }
-
 }
 
 
